@@ -30,6 +30,7 @@ Ceq_op = 2*C_op*Wn
 Ceq_ed = 2*C_ed*Wn
 sol1_0 = [0,omega_idot]
 sol2_0 = [0,omega_idot]
+sol3_0 = [0,omega_idot]
 
 
 w50 = 50
