@@ -2,7 +2,6 @@
 # -*- coding: utf-8 -*-
 """
 Created on Tue Jan 10 16:51:03 2023
-
 @author: maximegagnon
 """
 
@@ -30,9 +29,10 @@ Wd_ed = Wn*np.sqrt(1-C_ed**2)
 Ceq_op = 2*C_op*Wn
 Ceq_ed = 2*C_ed*Wn
 sol1_0 = [0,omega_idot]
+sol2_0 = [0,omega_idot]
 
 
-w = 100
+w = 50
 ti = 0
 tf = 0.5
 npts = 1000
@@ -46,22 +46,26 @@ def model(y,t,Meq,C,I,K):
 
 sol_op1 = np.empty(len(t),)
 sol_op1[0]=0
+sol_op2 = np.empty(len(t),)
+sol_op2[0]=0
 
 for i in range(0,len(t)-1):
     dt = [t[i],t[i+1]]
     sol1 = odeint(model,sol1_0,dt,args=(M[i],Ceq_op,I,K))
+    sol2 = odeint(model,sol2_0,dt,args=(M[i],Ceq_ed,I,K))
     
     sol1_0 = sol1[1]
+    sol2_0 = sol2[1]
     sol_op1[i+1]=sol1[1,0]
+    sol_op2[i+1]=sol2[1,0]
 
 sol_op = plt.plot(t, sol_op1, label='PCU Opérationnelle')
-#sol_ed = plt.plot(t, sol_ed[:, 0], label='PCU en défaillance')
+sol_ed = plt.plot(t, sol_op2, label='PCU en défaillance')
 plt.title("Oscillation de l'aileron")
 plt.xlabel('Temps (s)')
 plt.ylabel("Angle de l'aileron (rad)")
 plt.legend(loc="upper right")
-plt.show(sol_op)
-
+plt.show(sol_ed, sol_op)
 
 
 
