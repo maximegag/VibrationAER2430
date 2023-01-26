@@ -35,7 +35,7 @@ sol3_0 = [0,omega_idot]
 
 w50 = 50
 w100 = 100
-wn1 = 75
+wn1 = Wn
 
 ti = 0
 tf = 0.5
@@ -70,9 +70,9 @@ for i in range(0,len(t)-1):
     sol_op2[i+1]=sol2[1,0]
     sol_op3[i+1]=sol3[1,0]
 
-sol_op50 = plt.plot(t, sol_op1, label='PCU Opérationnelle')
-sol_op100 = plt.plot(t, sol_op2, label='PCU Opérationnelle')
-sol_opwn1 = plt.plot(t, sol_op3, label='PCU Opérationnelle')
+sol_op50 = plt.plot(t, sol_op1, label='W = 50')
+sol_op100 = plt.plot(t, sol_op2, label='W = 100')
+sol_opwn1 = plt.plot(t, sol_op3, label='W = Wn')
 
 
 #sol_ed50 = plt.plot(t, sol_op1, label='W = 50')
@@ -84,7 +84,6 @@ plt.xlabel('Temps (s)')
 plt.ylabel("Angle de l'aileron (rad)")
 plt.legend(loc="upper right")
 plt.show(sol_op50, sol_op100,sol_opwn1)
-
 
 
 
