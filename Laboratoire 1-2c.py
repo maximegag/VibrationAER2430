@@ -74,9 +74,9 @@ sol_op100 = plt.plot(t, sol_op2, label='PCU Opérationnelle')
 sol_opwn1 = plt.plot(t, sol_op3, label='PCU Opérationnelle')
 
 
-#sol_ed50 = plt.plot(t, sol_op1, label='PCU en défaillance')
-#sol_ed100 = plt.plot(t, sol_op2, label='PCU en défaillance')
-#sol_edwn1 = plt.plot(t, sol_op3, label='PCU en défaillance')
+#sol_ed50 = plt.plot(t, sol_op1, label='W = 50')
+#sol_ed100 = plt.plot(t, sol_op2, label='W = 100')
+#sol_edwn1 = plt.plot(t, sol_op3, label='W = Wn1')
 
 plt.title("Oscillation de l'aileron")
 plt.xlabel('Temps (s)')
