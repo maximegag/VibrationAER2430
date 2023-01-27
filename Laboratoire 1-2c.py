@@ -91,20 +91,16 @@ for i in range(0,len(t)-1):
     sol_ed3[i+1]=sol6[1,0]
 
 
+fig, (ax1,ax2,ax3,ax4,ax5,ax6) = plt.subplots(nrows=6, sharex='col', sharey='row')
 
 
-#sol_op50 = plt.plot(t, sol_op1, label='w = 50.00 rad/s')
-#sol_op100 = plt.plot(t, sol_op2, label='w = 100.00 rad/s')
-#sol_opwn1 = plt.plot(t, sol_op3, label='w = 252.98 rad/s')
-
-
-sol_ed50 = plt.plot(t, sol_ed1, label='W = 50.00')
-sol_ed100 = plt.plot(t, sol_ed2, label='W = 100.00')
-sol_edwn1 = plt.plot(t, sol_ed3, label='W = 252.98')
-
-plt.title("Oscillation de l'aileron calculée avec ζ en défaillance")
-plt.xlabel('Temps (s)')
-plt.ylabel("Angle de l'aileron (rad)")
-plt.legend(loc="upper right")
-#plt.show(sol_op50, sol_op100,sol_opwn1)
-plt.show(sol_ed50, sol_ed100,sol_edwn1)
+ax1.plot(t,sol_op1,"g",label="ζ_op avec w = 50.00 rad/s")
+ax3.plot(t,sol_op2,"b",label="ζ_op avec w = 100.00 rad/s")
+ax5.plot(t,sol_op3,"r",label="ζ_op avec w = 252.98 rad/s")
+ax2.plot(t,sol_ed1,"y",label="ζ_ed avec w = 50.00 rad/s")
+ax4.plot(t,sol_ed2,"c",label="ζ_ed avec w = 100.00 rad/s")
+ax6.plot(t,sol_ed3,"m",label="ζ_ed avec w = 252.98 rad/s")
+fig.supxlabel('Temps (s)')
+fig.supylabel("Angle de rotation (rad)")
+fig.suptitle("Réponse du sytème aux 3 cas d'impulsion pour les 2 modes de fonctionnement", fontsize=12)
+fig.legend()
