@@ -21,9 +21,26 @@ ti = 0.00000001
 tf = 3
 npts = 10000
 
-#Calcul de variables externes
+#Calcul de la fréquence naturelle
 Wn = np.sqrt(k*d**2/I)
+w50 = 50
+w100 = 100
+wn1 = Wn
 
+#Calculs des amplitudes
+r50=w50/Wn
+r100=w100/Wn
+rn1=wn1/Wn
+
+A50_op=1/(np.sqrt(((1-r50**2)**2)+(2*C_op*r50)**2))
+A100_op=1/(np.sqrt(((1-r100**2)**2)+(2*C_op*r100)**2))
+An1_op=1/(np.sqrt(((1-rn1**2)**2)+(2*C_op*rn1)**2))
+
+A50_ed=1/(np.sqrt(((1-r50**2)**2)+(2*C_ed*r50)**2))
+A100_ed=1/(np.sqrt(((1-r100**2)**2)+(2*C_ed*r100)**2))
+An1_ed=1/(np.sqrt(((1-rn1**2)**2)+(2*C_ed*rn1)**2))
+
+#Calcul de variables externes
 r=np.linspace(ti,tf,npts)  
 
 Xmax_op=1/(np.sqrt((1-(r)**2)**2+(2*C_op*(r))**2))
@@ -33,19 +50,19 @@ Xmax_ed=1/(np.sqrt((1-(r)**2)**2+(2*C_ed*(r))**2))
 plot_Xmax_od=plt.plot(r, Xmax_op,"b", label='PCU Opérationnelle')
 plot_Xmax_ed=plt.plot(r, Xmax_ed,"r", label='PCU En Défaillance')
 
-w50_op=plt.plot(0.197642,1.04043,"b",marker="o")
-w100_op=plt.plot(0.395285,1.18389,"b", marker="o")
-wn1_op=plt.plot(1,10,"b",marker="o")
+w50_op=plt.plot(r50,A50_op,"b",marker="o")
+w100_op=plt.plot(r100,A100_op,"b", marker="o")
+wn1_op=plt.plot(rn1,An1_op,"b",marker="o")
 
-w50_ed=plt.plot(0.197642,1.03519,"r",marker="x")
-w100_ed=plt.plot(0.395285,1.15395,"r", marker="x")
-wn1_ed=plt.plot(1,2,"r",marker="x")
+w50_ed=plt.plot(r50,A50_ed,"r",marker="x")
+w100_ed=plt.plot(r100,A100_ed,"r", marker="x")
+wn1_ed=plt.plot(rn1,An1_ed,"r",marker="x")
 
 #plt.title("Amplitude relative en fonction du ratio de fréquen")
 plt.xlabel("r=ω/ωn")
 plt.ylabel("|kX/F0|")
 plt.legend(loc="upper right")
-plt.show(plot_Xmax_od,plot_Xmax_ed,wn1_op,w100_op,w50_op)
+plt.show()
 
 
 
