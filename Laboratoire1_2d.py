@@ -41,7 +41,7 @@ w50_ed=plt.plot(0.197642,1.03519,"r",marker="x")
 w100_ed=plt.plot(0.395285,1.15395,"r", marker="x")
 wn1_ed=plt.plot(1,2,"r",marker="x")
 
-plt.title("Amplitude relative en fonction de r pour les deux modes de fonctionnement")
+#plt.title("Amplitude relative en fonction du ratio de fréquen")
 plt.xlabel("r=ω/ωn")
 plt.ylabel("|kX/F0|")
 plt.legend(loc="upper right")
